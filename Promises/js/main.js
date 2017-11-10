@@ -32,7 +32,6 @@
 
     var btn = d.getElementById("start");
     btn.addEventListener("click", function () {
-        get("https://lwp.fyu.se");
-        get("https://fyu.se/embed/jok2ul6cr9");
+        get("http://google.com");
     });
 }(window, document));
