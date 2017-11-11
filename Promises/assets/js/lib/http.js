@@ -49,28 +49,24 @@ class Request {
         if (this.errorStateFn) xhr.addEventListener("error", this.errorStateFn);
         if (this.abortStateFn) xhr.addEventListener("abort", this.abortStateFn);
 
-        //Create promise to resolve / reject response
-        this.promise = new Promise ((resolve, reject) => {
-            xhr.onload = () => resolve (xhr);
-            xhr.onerror = () => reject (xhr.responseText);
-        }).then ((req) => {
-            if ((!this.headers || !this.headers["content-length"]) && (req.responseText))
-                this.headers["content-length"] = req.responseText.length;
-
-            const resp = new Response({
-                statusCode: req.status,
-                headers: this.headers,
-                body: req.responseText,
-                contentLength: this.headers["content-length"]
-            });
-
-            console.log(resp);
-        }).catch ((e) => {
-            console.log(e);
-        });
-
         this.xhr = xhr;
         return this;
+    }
+
+    updateViewOnProgress (progFn) {
+        this.xhr.addEventListener("progress", progFn);
+    }
+
+    updateViewOnLoad (loadFn) {
+        this.xhr.addEventListener("load", loadFn);
+    }
+
+    updateViewOnError (errFn) {
+        this.xhr.addEventListener("error", errFn);
+    }
+
+    updateViewOnAbort (abortFn) {
+        this.xhr.addEventListener("abort", abortFn);
     }
 
     send () {

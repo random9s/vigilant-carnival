@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Promises</title>
+        <script src="/assets/js/lib/http.js"></script>
+        <!-- Import Bootstrap -->
+        <link rel="stylesheet" href="/assets/css/bootstrap/css/bootstrap.min.css">
+        <style>
+            .top-buffer {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div>
+                <label for="in-uid">UID</label>
+                <input type="text" name="in-uid" id="in-uid"><br>
+                <button id="addnew">Add Fyuse</button> 
+            </div>
+            <div class="container">
+                <div class="row" id="fyu-list"> 
+                </div>
+            </div>
+        </main>
+        <script src="https://fyu.se/embed?v=3.0"></script>
+        <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/fyu.js"></script>
+    </body>
+</html>
