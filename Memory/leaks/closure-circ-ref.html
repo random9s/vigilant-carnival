@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Memory Leak #3</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            document.write("memory leak via closures");
+            window.onload = function () {
+                var obj = document.getElementById('elem');
+                obj.onclick = function innerFunction () {
+                    alert("leaking...");
+                };
+                obj.bigString = new Array(1000).join(new Array(2000).join("XXXXXX")); //used to make leak significant
+            };
+        </script>
+        <button id="elem">Let's leak!</button>
+    </body>
+</html>

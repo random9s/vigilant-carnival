@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Avoiding memory leaks #2</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            document.write("Avoiding memory leaks by adding more closures");
+            window.onload = function outerFunc() {
+                var obj = document.getElementById('elem');
+                obj.onclick = doesNotLeak;
+            }
+
+            function doesNotLeak() {
+                alert ("Hey! No leak!");
+            }
+        </script>
+        <button id="elem">Click ME</button>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Memory Leak #2</title>
+        <script type="text/javascript">
+            document.write("circular references of JS and DOM"); 
+            function myFunc(elem) {
+                this.elemRef = elem; 
+                elem.expandoProp = elem;
+            }
+            function Leak() {
+                var f = new myFunc(document.getElementById('myDiv'));
+                console.log (f.elemRef);
+            }
+        </script>
+    </head>
+    <body onload="Leak()">
+        <div id="myDiv"></div>
+    </body>
+</html>

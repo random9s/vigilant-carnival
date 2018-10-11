@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Avoiding memory leaks #1</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            document.write("Avoiding memory leaks by setting obj to null");
+            window.onload = function outerFunc() {
+                var obj = document.getElementById('elem');
+                obj.onclick = function innerFunc () {
+                    alert ("hey, let's not leak");
+                    //other logic
+                };
+                obj.bigString = new Array(1000).join(new Array(2000).join("XXXXXX"));
+                obj = null; //setting obj to null will break the circular reference
+            }
+        </script>
+        <button id="elem">Click ME</button>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Memory Leak #1</title></head>
+    <body>
+        <script type="text/javascript">
+            document.write("circular reference using JS and DOM");
+            var obj;
+            window.onload = function () {
+                obj = document.getElementById('divElem'); //store reference to DOM element in obj
+                document.getElementById('divElem').expandoProp = obj; //assign obj to an expando propert of the DOM element.  
+                //Now they both contain a reference to each other and will never be released by the GC
+
+                obj.bigString = new Array(1000).join(new Array(2000).join("XXXXXX"));
+            };
+        </script>
+        <div id="divElem">Div Element</div>
+    </body>
+</html>
