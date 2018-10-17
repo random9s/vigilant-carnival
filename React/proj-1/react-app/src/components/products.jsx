@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Product from './product';
+import NewProduct from './newproduct';
 
 class Products extends Component {
     render() {
@@ -7,27 +8,7 @@ class Products extends Component {
         if (this.props.products.length > 0) {
             products = (
                 <div>
-                    <div>
-                        <input id="new-product" type="text" placeholder="product name"></input>
-                        <button
-                            className="btn btn-secondary btn-sm m-2 btn-success"
-                            onClick={(e) => {
-                                e.preventDefault();
-
-                                let newProduct = document.getElementById('new-product');
-                                let product = {
-                                    id: 0,
-                                    value: newProduct.value,
-                                    count: 0
-                                };
-
-                                this.props.onAdd(product);
-                                newProduct.value = "";
-                            }}
-                        >
-                            Add
-                        </button>
-                    </div>
+                    <NewProduct onAdd={ this.props.onAdd } />
                     <button 
                         className="btn btn-primary btn-sm m-2"
                         onClick={ this.props.onReset } 

@@ -8,17 +8,20 @@ class App extends Component {
             {
                 id: 1,
                 value: "eggs",
-                count: 0
+                count: 0,
+                src: "https://media.npr.org/assets/img/2018/01/03/gettyimages-182717335-30-355069be313ad674537c51219c269b654d5fc05a-s1100-c15.jpg"
             },
             {
                 id: 2,
                 value: "cheese",
-                count: 0
+                count: 0,
+                src: "https://images-na.ssl-images-amazon.com/images/I/41Ip5NBRyEL.jpg"
             },
             {
                 id: 3,
                 value: "milk",
-                count: 0
+                count: 0,
+                src: "https://static.meijer.com/Media/000/41250/0004125010200_1_A1C1_0600.png"
             }
         ]
     };
@@ -59,8 +62,7 @@ class App extends Component {
     };
 
     render() {
-        return (
-            <React.Fragment>
+        return ( <React.Fragment>
                 <NavBar products={ this.state.products } />
                 <main role="main" className="container">
                     <Products

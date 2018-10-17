@@ -7,7 +7,7 @@ class NavBar extends Component {
 
         return (
             <nav className="navbar navbar-light bg-light">
-                <a className="navbar-brand" href="#">Home</a>
+                <a className="navbar-brand" href="/">Home</a>
                 <span className="badge m-2 badge-secondary">{ countText }</span>
             </nav>
         );
